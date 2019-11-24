@@ -1,0 +1,26 @@
+﻿docker run --memory="4g" --privileged -d --name elk_2 -p 80:8000 -p 22222:22 -p 1111:9200 -p 1112:5601 -p 1113:9600 -p 8080:8080 -p 8088:8088 lsjsj92/lg_elk:2 init
+
+docker exec -it elk_2 bash
+
+
+service firewalld stop
+
+service elasticsearch start
+
+service kibana start
+/usr/share/kibana/bin/kibana
+
+
+/usr/share/logstash/bin/logstash -f ./logstash.conf
+
+/usr/share/logstash/bin/logstash -f ./btc_logstash.conf
+
+
+python3 manage.py runserver 0.0.0.0:8000
+
+
+
+
+
+
+

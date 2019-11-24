@@ -1,0 +1,11 @@
+docker pull lsjsj92/lg_env:2.1
+docker run --memory="4g" --privileged -d --name namenode -p 80:80 -p 22222:22 -p 1111:9000 -p 1112:9001 -p 1113:8888 -p 1114:50070 -p 1115:50090 -p 1116:4040 -p 1117:8889 -p 8080:8080  -p 8088:8088 lsjsj92/lg_env:2.1 init
+
+docker exec -it namenode bash
+
+systemctl stop firewalld
+
+
+
+http://ec2-15-164-216-162.ap-northeast-2.compute.amazonaws.com:1114/
+
